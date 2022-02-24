@@ -14,7 +14,7 @@ html {
   --text-color: #757575;
   --secondary-text-color: #fff;
   --extra-text-color: #212121;
-  --acent-color: #2196f3;
+  --acent-color: rgb(33, 150, 243);
   --section--bg-color: #2f303a;
   --team-icon-color: #afb1b8;
   --second-font: Raleway;
@@ -120,6 +120,10 @@ img {
 }
 
 .logo {
+  transition-property: text-decotation;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
   color: var(--acent-color);
   font-family: var(--second-font);
   font-size: 26px;
@@ -169,6 +173,12 @@ img {
 }
 
 .page-nav-link {
+  position: relative;
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
   display: block;
   padding-top: 32px;
   padding-bottom: 32px;
@@ -182,8 +192,37 @@ img {
 .page-nav-link:focus {
   color: var(--acent-color);
 }
-.page-nav-link.currant {
+.page-nav-link.currant-studio {
   color: var(--acent-color);
+}
+
+.currant-studio::after {
+  position: absolute;
+  bottom: 0;
+
+  display: block;
+  content: "";
+  width: 100%;
+  height: 4px;
+
+  background-color: var(--acent-color);
+  border-radius: 2px;
+}
+
+.page-nav-link.currant-portfolio {
+  color: var(--acent-color);
+}
+
+.currant-portfolio::after {
+  display: block;
+  content: "";
+  width: 100%;
+  height: 4px;
+
+  position: absolute;
+  bottom: 0;
+  background-color: var(--acent-color);
+  border-radius: 2px;
 }
 
 /* Стилизация контактов в верхей правой части страницы */
@@ -199,6 +238,10 @@ img {
 }
 
 .aside-contact {
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
   display: flex;
   align-items: center;
   padding-top: 32px;
@@ -262,6 +305,10 @@ img {
 
 /* Стилизация главной кнопки */
 .main-button {
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
   min-width: 200px;
   padding-top: 10px;
   padding-right: 32px;
@@ -269,8 +316,10 @@ img {
   padding-left: 32px;
   border-color: transparent;
   border-radius: 4px;
+
   color: var(--secondary-text-color);
   background-color: var(--acent-color);
+
   font-family: Roboto, sans-serif;
   font-size: 16px;
   font-weight: var(--font-weight);
@@ -281,6 +330,60 @@ img {
 
 .main-button:hover {
   background-color: #188ce8;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.2)
+  );
+  z-index: 2;
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  min-width: 528px;
+  min-height: 581px;
+  background-color: var(--secondary-text-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 15px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  cursor: pointer;
+  color: #000;
+}
+
+.close-icon {
+  fill: currentColor;
 }
 
 /* Стилизация преимуществ компании */
@@ -330,6 +433,40 @@ img {
 
 .service-list-item:not(:last-child) {
   margin-right: 30px;
+}
+
+.service-list-item {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.service-header {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+  width: 100%;
+  height: 70px;
+  color: var(--secondary-text-color);
+  background-image: linear-gradient(
+    to right,
+    rgba(47, 48, 58, 0.8),
+    rgba(10, 11, 15, 0.8)
+  );
+
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: var(--letter-spacing-base);
+  font-weight: var(--font-weight);
+  text-transform: uppercase;
+  text-align: center;
 }
 
 /* Стилизация команды */
@@ -386,6 +523,10 @@ img {
 }
 
 .team-media-link {
+  transition-property: color, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -423,6 +564,10 @@ img {
 }
 
 .clients-list-link {
+  transition-property: color, border;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
   width: 170px;
   height: 92px;
   display: flex;
@@ -462,6 +607,9 @@ img {
 }
 
 .address-link {
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   color: var(--secondary-text-color);
 }
 
@@ -473,9 +621,14 @@ img {
 /* Стилизация почты и телефона */
 
 .address-contact {
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
   color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
 }
+
 .address-contact:hover,
 .address-contact:focus {
   color: var(--acent-color);
@@ -509,6 +662,10 @@ img {
 }
 
 .subscribe-list-link {
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -520,6 +677,7 @@ img {
 }
 
 .icon-subscrb {
+  height: 20px;
   fill: currentColor;
 }
 
@@ -541,6 +699,10 @@ img {
 }
 
 .portfolio-button {
+  transition-property: color, background-color, border-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
   min-width: 73px;
   padding-top: 6px;
   padding-right: 22px;
@@ -555,6 +717,7 @@ img {
   font-size: 16px;
   line-height: 1.63;
   letter-spacing: var(--letter-spacing-base);
+  cursor: pointer;
 }
 
 .portfolio-button:hover,
@@ -563,7 +726,6 @@ img {
   color: var(--secondary-text-color);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
-  cursor: pointer;
 }
 
 /* Галерея работ */
@@ -580,6 +742,44 @@ img {
   text-align: left;
 }
 
+.work-list-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  transform: translatey(100%);
+
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  max-width: 100%;
+  height: 100%;
+  padding-top: 63px;
+  padding-right: 24px;
+  padding-bottom: 63px;
+  padding-left: 24px;
+
+  background-color: rgba(33, 150, 243, 0.9);
+}
+
+.work-list-link:hover .overlay,
+.work-list-link:focus .overlay {
+  transform: translatey(0);
+}
+
+.overlay.text {
+  color: var(--secondary-text-color);
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: var(--letter-spacing-base);
+  text-align: left;
+}
 .work-list-item:not(:nth-last-child(-n + 3)) {
   margin-bottom: 30px;
 }
@@ -589,6 +789,10 @@ img {
 }
 
 .work-list-link {
+  transition-property: box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
   display: block;
 }
 .work-list-link:hover,
